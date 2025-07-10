@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy, Borrow, Die Strategy Calculator - Finmetic | Financial Arithmetic</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <!-- Include the navbar component -->
+    <div id="navbar-container"></div>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Buy, Borrow, Die Strategy Calculator</h1>
+                <p class="hero__subtitle">Calculate borrowing capacity and loan terms against your appreciating assets</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="content__container">
+                <div class="calculator">
+                    <div class="calculator__inputs">
+                        <h2 class="calculator__title">Asset & Loan Parameters</h2>
+                        
+                        <div class="input-group">
+                            <label for="assetValue" class="input-label">Current Asset Value</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="assetValue" class="input-field" value="250000" min="0" step="10000">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="loanToValue" class="input-label">Loan-to-Value Ratio (%)</label>
+                            <input type="number" id="loanToValue" class="input-field" value="50" min="10" max="80" step="5">
+                            <small class="input-help">Maximum percentage of asset value you can borrow (typically 50-70%)</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="interestRate" class="input-label">Interest Rate (%)</label>
+                            <input type="number" id="interestRate" class="input-field" value="6" min="0" max="20" step="0.1">
+                            <small class="input-help">Annual interest rate on the loan</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="assetGrowthRate" class="input-label">Expected Asset Growth Rate (%)</label>
+                            <input type="number" id="assetGrowthRate" class="input-field" value="10" min="0" max="20" step="0.1">
+                            <small class="input-help">Expected annual appreciation of your assets</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="desiredMonthlyIncome" class="input-label">Desired Monthly Income</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="desiredMonthlyIncome" class="input-field" value="5000" min="0" step="100">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="yearsToProject" class="input-label">Years to Project</label>
+                            <input type="number" id="yearsToProject" class="input-field" value="10" min="1" max="50">
+                            <small class="input-help">How many years to project the strategy</small>
+                        </div>
+
+                        <button class="calculate-btn" onclick="calculateBBDS()">Calculate</button>
+                    </div>
+
+                    <div class="calculator__results">
+                        <h2 class="calculator__title">Results</h2>
+                        
+                        <div class="result-card result-card--primary">
+                            <h3 class="result-title">Maximum Loan Amount</h3>
+                            <p class="result-value" id="maxLoanAmount">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Monthly Interest Payment</h3>
+                            <p class="result-value" id="monthlyInterest">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Net Monthly Income</h3>
+                            <p class="result-value" id="netMonthlyIncome">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Asset Value After 30 Years</h3>
+                            <p class="result-value" id="futureAssetValue">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Loan-to-Value After 30 Years</h3>
+                            <p class="result-value" id="futureLTV">0%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenarios">
+                    <h2 class="scenarios__title">Asset Value Over 50 Years</h2>
+                    <p class="scenarios__subtitle">See how your assets grow over time with the Buy, Borrow, Die strategy</p>
+                    
+                    <div class="chart-container">
+                        <canvas id="assetGrowthChart" class="scenarios__chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Finmetic</h3>
+                    <p>Financial Arithmetic</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../../cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/index.html">Free Tools</a></li>
+                        <li><a href="/index.html">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Finmetic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="../../components/navbar.js"></script>
+    <script src="../../script.js"></script>
+    <script>
+        // Load the navbar component
+        fetch('../../components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                // Re-initialize navbar after loading
+                if (window.websiteNavbar) {
+                    window.websiteNavbar.setupNavbar();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+    <script src="buy-borrow-die-calculator.js"></script>
+</body>
+</html> 

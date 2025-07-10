@@ -1,0 +1,120 @@
+/* Grid Components - Grid layouts and containers */
+
+/* Blog Grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+/* Tools Grid */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+/* Content Container */
+.content {
+    padding: 40px 24px 80px;
+}
+
+.content__container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Features Section for Landing Page */
+.features {
+    padding: 80px 24px;
+    background-color: #fafafa;
+}
+
+.features__container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 48px;
+    line-height: 1.2;
+}
+
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 32px;
+}
+
+/* Responsive Grid Styles */
+@media (max-width: 768px) {
+    .blog-grid,
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .content {
+        padding: 32px 20px 60px;
+    }
+
+    .content__container {
+        max-width: 100%;
+    }
+
+    .features {
+        padding: 60px 20px;
+    }
+
+    .features__title {
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+
+    .features__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-grid {
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .content {
+        padding: 24px 16px 40px;
+    }
+
+    .content__container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .features {
+        padding: 40px 16px;
+    }
+
+    .features__title {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    .features__grid {
+        gap: 20px;
+    }
+} 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Tools - Finmetic | Financial Arithmetic</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <!-- Include the navbar component -->
+    <div id="navbar-container"></div>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Free Financial Tools</h1>
+                <p class="hero__subtitle">Professional-grade calculators and analysis tools for finance professionals</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="content__container">
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h2 class="tool-card__title">Retirement Calculator</h2>
+                        <p class="tool-card__description">Calculate how much you need to invest monthly to achieve your retirement goals.</p>
+                        <a href="retirement-calculator/retirement-calculator.html" class="tool-card__button" style="text-decoration: none; display: inline-block;">Launch Tool</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <h2 class="tool-card__title">Income from Assets</h2>
+                        <p class="tool-card__description">Calculate how much in assets you need to generate your desired monthly income from dividends.</p>
+                        <a href="income-from-assets/income-from-assets.html" class="tool-card__button" style="text-decoration: none; display: inline-block;">Launch Tool</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <h2 class="tool-card__title">Asset Depletion Calculator</h2>
+                        <p class="tool-card__description">Calculate how much in assets you need when selling a percentage of your portfolio each month.</p>
+                        <a href="asset-depletion/asset-depletion-calculator.html" class="tool-card__button" style="text-decoration: none; display: inline-block;">Launch Tool</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <h2 class="tool-card__title">Buy, Borrow, Die Strategy</h2>
+                        <p class="tool-card__description">Calculate borrowing capacity and compare with traditional selling strategies.</p>
+                        <a href="buy-borrow-die/buy-borrow-die-calculator.html" class="tool-card__button" style="text-decoration: none; display: inline-block;">Launch Tool</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <h2 class="tool-card__title">ROI Calculator</h2>
+                        <p class="tool-card__description">Calculate investment returns with compounding and leverage effects.</p>
+                        <a href="roi-calculator/roi-calculator.html" class="tool-card__button" style="text-decoration: none; display: inline-block;">Launch Tool</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <h2 class="tool-card__title">Strategy Comparison</h2>
+                        <p class="tool-card__description">Compare Income from Assets, Asset Depletion, and Buy, Borrow, Die strategies.</p>
+                        <a href="strategy-comparison/strategy-comparison.html" class="tool-card__button" style="text-decoration: none; display: inline-block;">Launch Tool</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <h2 class="tool-card__title">Investment Calculator</h2>
+                        <p class="tool-card__description">Calculate end amount, required contributions, return rates, starting amounts, and investment length.</p>
+                        <a href="investment-calculator/investment-calculator.html" class="tool-card__button" style="text-decoration: none; display: inline-block;">Launch Tool</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Finmetic</h3>
+                    <p>Financial Arithmetic</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../Footer/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../Footer/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../Footer/cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/index.html">Free Tools</a></li>
+                        <li><a href="/index.html">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Finmetic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../utils/auth.js"></script>
+    <script src="../components/navbar.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        // Load the navbar component
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                // Re-initialize navbar after loading
+                if (window.websiteNavbar) {
+                    window.websiteNavbar.setupNavbar();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+</body>
+</html> 

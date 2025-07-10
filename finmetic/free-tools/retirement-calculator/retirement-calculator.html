@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Calculator - Finmetic | Financial Arithmetic</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <!-- Include the navbar component -->
+    <div id="navbar-container"></div>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Retirement Calculator</h1>
+                <p class="hero__subtitle">Calculate how much you need to invest monthly to achieve your retirement goals</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="content__container">
+                <div class="calculator">
+                    <div class="calculator__inputs">
+                        <h2 class="calculator__title">Your Retirement Goals</h2>
+                        
+                        <div class="input-group">
+                            <label for="desiredIncome" class="input-label">Desired Annual Income in Retirement</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="desiredIncome" class="input-field" value="80000" min="0" step="1000">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="currentAssets" class="input-label">Current Assets / Savings</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="currentAssets" class="input-field" value="250000" min="0" step="1000">
+                            </div>
+                            <small class="input-help">Money you already have saved for retirement</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="yearsToRetirement" class="input-label">Years Until Retirement</label>
+                            <input type="number" id="yearsToRetirement" class="input-field" value="10" min="1" max="50">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="interestRate" class="input-label">Expected Annual Return (%)</label>
+                            <input type="number" id="interestRate" class="input-field" value="10" min="0" step="0.1">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="withdrawalRate" class="input-label">Safe Withdrawal Rate (%)</label>
+                            <input type="number" id="withdrawalRate" class="input-field" value="4" min="2" max="8" step="0.1">
+                            <small class="input-help">Typically 3-4% for sustainable retirement income</small>
+                        </div>
+
+                        <button class="calculate-btn" onclick="calculateRetirement()">Calculate</button>
+                    </div>
+
+                    <div class="calculator__results">
+                        <h2 class="calculator__title">Results</h2>
+                        
+                        <div class="result-card">
+                            <h3 class="result-title">Total Amount Needed</h3>
+                            <p class="result-value" id="totalNeeded">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Future Value of Current Assets</h3>
+                            <p class="result-value" id="futureAssets">$0</p>
+                        </div>
+
+                        <div class="result-card result-card--primary">
+                            <h3 class="result-title">Monthly Investment Required</h3>
+                            <p class="result-value" id="monthlyInvestment">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Total Invested Over Time</h3>
+                            <p class="result-value" id="totalInvested">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Investment Growth</h3>
+                            <p class="result-value" id="investmentGrowth">$0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenarios">
+                    <h2 class="scenarios__title">Investment Scenarios</h2>
+                    <p class="scenarios__subtitle">See how your required monthly investment changes with time</p>
+                    <div class="chart-container">
+                        <canvas id="scenariosChart" class="scenarios__chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Finmetic</h3>
+                    <p>Financial Arithmetic</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../../cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/index.html">Free Tools</a></li>
+                        <li><a href="/index.html">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Finmetic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../utils/auth.js"></script>
+    <script src="../../components/navbar.js"></script>
+    <script src="../../script.js"></script>
+    <script>
+        // Load the navbar component
+        fetch('../../components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                // Re-initialize navbar after loading
+                if (window.websiteNavbar) {
+                    window.websiteNavbar.setupNavbar();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+    <script src="retirement-calculator.js"></script>
+</body>
+</html> 

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Depletion Calculator - Finmetic | Financial Arithmetic</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <!-- Include the navbar component -->
+    <div id="navbar-container"></div>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Asset Depletion Calculator</h1>
+                <p class="hero__subtitle">Calculate how much in assets you need when selling a percentage of your portfolio each month</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="content__container">
+                <div class="calculator">
+                    <div class="calculator__inputs">
+                        <h2 class="calculator__title">Withdrawal Strategy</h2>
+                        
+                        <div class="input-group">
+                            <label for="desiredMonthlyIncome" class="input-label">Desired Monthly Income</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="desiredMonthlyIncome" class="input-field" value="5000" min="0" step="100">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="monthlyWithdrawalRate" class="input-label">Monthly Withdrawal Rate (%)</label>
+                            <input type="number" id="monthlyWithdrawalRate" class="input-field" value="0.5" min="0.1" max="10" step="0.1">
+                            <small class="input-help">Percentage of portfolio you'll sell each month (0.5% = 6% annually)</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="annualReturn" class="input-label">Expected Annual Return (%)</label>
+                            <input type="number" id="annualReturn" class="input-field" value="10" min="0" max="20" step="0.1">
+                            <small class="input-help">Expected growth rate of your remaining assets</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="yearsToCalculate" class="input-label">Years to Calculate</label>
+                            <input type="number" id="yearsToCalculate" class="input-field" value="10" min="1" max="50">
+                            <small class="input-help">How many years to project the depletion</small>
+                        </div>
+
+                        <button class="calculate-btn" onclick="calculateDepletion()">Calculate</button>
+                    </div>
+
+                    <div class="calculator__results">
+                        <h2 class="calculator__title">Results</h2>
+                        
+                        <div class="result-card result-card--primary">
+                            <h3 class="result-title">Initial Assets Needed</h3>
+                            <p class="result-value" id="initialAssets">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Annual Withdrawal Rate</h3>
+                            <p class="result-value" id="annualWithdrawalRate">0%</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Monthly Withdrawal Amount</h3>
+                            <p class="result-value" id="monthlyWithdrawal">$0</p>
+                        </div>
+
+                        <div class="result-card">
+                            <h3 class="result-title">Assets After 30 Years</h3>
+                            <p class="result-value" id="finalAssets">$0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scenarios">
+                    <h2 class="scenarios__title">Withdrawal Rate vs Assets Needed</h2>
+                    <p class="scenarios__subtitle">See how different withdrawal rates affect your required assets</p>
+                    
+                    <div class="chart-container">
+                        <canvas id="withdrawalChart" class="scenarios__chart"></canvas>
+                        <div id="chartTooltip" class="chart-tooltip"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Finmetic</h3>
+                    <p>Financial Arithmetic</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../../cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/index.html">Free Tools</a></li>
+                        <li><a href="/index.html">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Finmetic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../components/navbar.js"></script>
+    <script src="../../script.js"></script>
+    <script>
+        // Load the navbar component
+        fetch('../../components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                // Re-initialize navbar after loading
+                if (window.websiteNavbar) {
+                    window.websiteNavbar.setupNavbar();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+    <script src="asset-depletion-calculator.js"></script>
+</body>
+</html> 

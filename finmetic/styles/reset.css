@@ -1,0 +1,25 @@
+/* CSS Reset - Extracted from existing style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Global utility classes */
+.hidden {
+    display: none;
+}
+
+/* Main content base */
+.main {
+    min-height: calc(100vh - 64px);
+    padding-top: 80px;
+} 

@@ -1,0 +1,26 @@
+/* Main CSS File - Imports all modular components */
+
+/* Reset and Base Styles */
+@import './reset.css';
+
+/* Layout Components */
+@import './components/header.css';
+@import './components/hero.css';
+@import './components/grids.css';
+@import './components/footer.css';
+
+/* UI Components */
+@import './components/buttons.css';
+@import './components/inputs.css';
+@import './components/checkboxes.css';
+@import './components/forms.css';
+@import './components/cards.css';
+@import './components/charts.css';
+@import './components/tables.css';
+@import './components/tooltips.css';
+@import './components/links.css';
+
+/* Feature Components */
+@import './components/calculator.css';
+@import './components/auth.css';
+@import './components/legal.css'; 

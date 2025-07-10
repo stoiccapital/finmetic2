@@ -1,0 +1,89 @@
+/* Hero Component - Hero section styles */
+
+.hero {
+    text-align: center;
+    padding: 80px 24px;
+}
+
+.hero__container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+    line-height: 1.2;
+}
+
+.hero__subtitle {
+    font-size: 18px;
+    color: #666;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Responsive Hero Styles */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero__container {
+        max-width: 100%;
+    }
+
+    .hero__title {
+        font-size: 32px;
+        margin-bottom: 12px;
+        line-height: 1.3;
+    }
+
+    .hero__subtitle {
+        font-size: 16px;
+        max-width: 100%;
+    }
+
+    .hero__description {
+        font-size: 15px;
+        color: #666;
+        font-weight: 400;
+        max-width: 100%;
+        margin: 8px auto 0;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 16px;
+    }
+
+    .hero__container {
+        max-width: 100%;
+    }
+
+    .hero__title {
+        font-size: 28px;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .hero__subtitle {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .hero__description {
+        font-size: 16px;
+        color: #666;
+        font-weight: 400;
+        max-width: 100%;
+        margin: 6px auto 0;
+        line-height: 1.6;
+    }
+} 

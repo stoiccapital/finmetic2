@@ -1,0 +1,75 @@
+/* Checkbox Components - Specialized checkbox styles */
+
+/* Checkbox Styles */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    margin-right: 8px;
+    position: relative;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+    background-color: #000;
+    border-color: #000;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Checkbox Variants */
+.checkbox-label--large {
+    font-size: 16px;
+}
+
+.checkbox-label--large .checkbox-custom {
+    width: 20px;
+    height: 20px;
+}
+
+.checkbox-label--small {
+    font-size: 12px;
+}
+
+.checkbox-label--small .checkbox-custom {
+    width: 14px;
+    height: 14px;
+}
+
+/* Checkbox States */
+.checkbox-label--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.checkbox-label--error .checkbox-custom {
+    border-color: #dc3545;
+}
+
+.checkbox-label--success .checkbox-custom {
+    border-color: #28a745;
+} 

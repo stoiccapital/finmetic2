@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Rate Calculator - Finmetic | Financial Arithmetic</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <!-- Include the navbar component -->
+    <div id="navbar-container"></div>
+
+    <main class="main">
+        <section class="content">
+            <div class="content__container">
+                <div class="calculator">
+                    <div class="calculator__inputs">
+                        <h2 class="calculator__title">Calculation Mode</h2>
+                        
+                        <div class="mode-selector">
+                            <button class="mode-btn" onclick="window.location.href='end-amount-calculator.html'">End Amount</button>
+                            <button class="mode-btn" onclick="window.location.href='additional-contribution-calculator.html'">Additional Contribution</button>
+                            <button class="mode-btn active">Return Rate</button>
+                            <button class="mode-btn" onclick="window.location.href='starting-amount-calculator.html'">Starting Amount</button>
+                            <button class="mode-btn" onclick="window.location.href='investment-length-calculator.html'">Investment Length</button>
+                        </div>
+                        
+                        <h3 style="margin-top: 24px;">Calculate Required Return Rate</h3>
+                        <p style="color: #666; margin-bottom: 20px;">Find out what return rate you need to achieve your target amount.</p>
+                        
+                        <div class="input-group">
+                            <label for="rr-starting-amount" class="input-label">Starting Amount</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="rr-starting-amount" class="input-field" placeholder="e.g., 10000" step="0.01" min="0" value="250000">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="rr-monthly-contribution" class="input-label">Monthly Contribution</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="rr-monthly-contribution" class="input-field" placeholder="e.g., 500" step="0.01" min="0" value="5000">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="rr-target-amount" class="input-label">Target End Amount</label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="rr-target-amount" class="input-field" placeholder="e.g., 500000" step="0.01" min="0" value="1000000">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="rr-years" class="input-label">Investment Length (Years)</label>
+                            <input type="number" id="rr-years" class="input-field" placeholder="e.g., 20" step="0.01" min="0" value="10">
+                        </div>
+                        
+                        <button class="calculate-btn" onclick="calculateReturnRate()">Calculate</button>
+                    </div>
+
+                    <div class="calculator__results">
+                        <h2 class="calculator__title">Results</h2>
+                        
+                        <div class="results-grid">
+                            <div id="rr-result" class="result-card">
+                                <h3 class="result-title">Required Annual Return Rate</h3>
+                                <p class="result-value" id="rr-result-value">0%</p>
+                            </div>
+
+                            <div id="rr-end-amount-result" class="result-card">
+                                <h3 class="result-title">End Amount</h3>
+                                <p class="result-value" id="rr-end-amount-value">$0</p>
+                            </div>
+
+                            <div id="rr-starting-amount-result" class="result-card">
+                                <h3 class="result-title">Starting Amount</h3>
+                                <p class="result-value" id="rr-starting-amount-value">$0</p>
+                            </div>
+
+                            <div id="rr-total-contributions-result" class="result-card">
+                                <h3 class="result-title">Total Contributions</h3>
+                                <p class="result-value" id="rr-total-contributions-value">$0</p>
+                            </div>
+
+                            <div id="rr-total-interest-result" class="result-card">
+                                <h3 class="result-title">Total Interest</h3>
+                                <p class="result-value" id="rr-total-interest-value">$0</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-section">
+                            <h3 class="chart-title">Return Rate Analysis</h3>
+                            <div class="chart-container">
+                                <canvas id="balanceChart" class="scenarios__chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div id="yearly-breakdown" class="yearly-breakdown">
+                            <h3 class="breakdown-title">Yearly Breakdown</h3>
+                            <div class="table-container">
+                                <table id="breakdown-table" class="breakdown-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Year</th>
+                                            <th>Starting Balance</th>
+                                            <th>Annual Contributions</th>
+                                            <th>Interest Earned</th>
+                                            <th>Ending Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="breakdown-tbody">
+                                        <tr class="empty-state">
+                                            <td colspan="5" style="text-align: center; color: #666; font-style: italic; padding: 24px;">
+                                                Enter values and calculate to see yearly breakdown
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Finmetic</h3>
+                    <p>Financial Arithmetic</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../../Footer/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../../Footer/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../../Footer/cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/index.html">Free Tools</a></li>
+                        <li><a href="/index.html">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Finmetic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../components/navbar.js"></script>
+    <script src="../../script.js"></script>
+    <script>
+        // Load the navbar component
+        fetch('../../components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                // Re-initialize navbar after loading
+                if (window.websiteNavbar) {
+                    window.websiteNavbar.setupNavbar();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+    <script src="shared-functions.js"></script>
+    <script src="return-rate-calculator.js"></script>
+    <script>
+        // Initialize calculator with goals data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize with goals data
+            initializeCalculatorWithGoals();
+            
+            // Add input event listeners for real-time calculation
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    setTimeout(function() {
+                        calculateReturnRate();
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

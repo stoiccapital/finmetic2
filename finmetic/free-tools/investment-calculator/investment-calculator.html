@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator - Finmetic | Financial Arithmetic</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <!-- Include the navbar component -->
+    <div id="navbar-container"></div>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Investment Calculator</h1>
+                <p class="hero__subtitle">Calculate different investment metrics based on your inputs. Choose what you want to calculate.</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="content__container">
+                <div class="calculator">
+                    <div class="calculator__inputs">
+                        <h2 class="calculator__title">Calculation Mode</h2>
+                        
+                        <div class="mode-selector">
+                            <button class="mode-btn" onclick="window.location.href='end-amount-calculator.html'">End Amount</button>
+                            <button class="mode-btn" onclick="window.location.href='additional-contribution-calculator.html'">Additional Contribution</button>
+                            <button class="mode-btn" onclick="window.location.href='return-rate-calculator.html'">Return Rate</button>
+                            <button class="mode-btn" onclick="window.location.href='starting-amount-calculator.html'">Starting Amount</button>
+                            <button class="mode-btn" onclick="window.location.href='investment-length-calculator.html'">Investment Length</button>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 40px 20px; color: #666;">
+                            <p style="font-size: 18px; margin-bottom: 16px;">Select a calculation mode above to get started</p>
+                            <p style="font-size: 14px;">Each calculator is optimized for its specific calculation type</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Finmetic</h3>
+                    <p>Financial Arithmetic</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../../Footer/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../../Footer/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../../Footer/cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/index.html">Free Tools</a></li>
+                        <li><a href="/index.html">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Finmetic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../components/navbar.js"></script>
+    <script src="../../script.js"></script>
+    <script>
+        // Load the navbar component
+        fetch('../../components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                // Re-initialize navbar after loading
+                if (window.websiteNavbar) {
+                    window.websiteNavbar.setupNavbar();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+</body>
+</html> 
