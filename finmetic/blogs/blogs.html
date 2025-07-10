@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - Finmetic | Financial Arithmetic</title>
+    <meta name="description" content="Want to save your first $100K fast? This guide gives you a simple, proven strategy for busy people who want to build wealth without burnout.">
+    <meta name="keywords" content="how to save 100k, save 100k fast, first 100k, financial freedom, wealth building, simple saving strategy">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <!-- Include the navbar component -->
+    <div id="navbar-container"></div>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Finmetic Blogs</h1>
+                <p class="hero__subtitle">Financial Arithmetic</p>
+                <p class="hero__subtitle">Insights, analysis, and thought leadership in quantitative finance</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="content__container">
+                <div class="blog-grid">
+                    <a href="how-to-save-100k.html" class="blog-card" style="text-decoration:none; color:inherit;">
+                        <h2 class="blog-card__title">The Fastest Way to Reach $100K: A Simple Strategy for Busy People</h2>
+                        <p class="blog-card__excerpt">A practical, no-nonsense approach to building your first $100,000 even with a busy schedule. <span style='color:#007bff;text-decoration:underline;'>Read more</span></p>
+                        <div class="blog-card__meta">
+                            <span class="blog-card__date">2024</span>
+                            <span class="blog-card__read-time">5 min read</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Finmetic</h3>
+                    <p>Financial Arithmetic</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../Footer/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../Footer/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../Footer/cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="../free-tools/free-tools.html">Free Tools</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Finmetic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../components/navbar.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        // Load the navbar component
+        fetch('../components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+                // Re-initialize navbar after loading
+                if (window.websiteNavbar) {
+                    window.websiteNavbar.setupNavbar();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+</body>
+</html> 
